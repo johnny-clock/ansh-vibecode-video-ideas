@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>Vibecode YouTube Ideas | Founder Funnel</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --surface: #071117;
+      --surface-2: #0a1b23;
+      --surface-3: #0d2832;
+      --text: #f2f7f8;
+      --muted: #91a8b1;
+      --line: rgba(43,143,168,.18);
+      --line-strong: rgba(43,143,168,.38);
+      --accent: #2b8fa8;
+      --accent-ink: #020608;
+      --positive: #6de59b;
+      --positive-bg: rgba(109,229,155,.07);
+      --radius: 18px;
+      --ease: cubic-bezier(.16,1,.3,1);
+      --shadow: 0 26px 80px rgba(0,0,0,.34);
+      font-synthesis: none;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+
+    .deck {
+      position: relative;
+      min-height: 100dvh;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse 92% 105% at 108% -12%, rgba(18,105,128,.28) 0%, rgba(11,72,91,.18) 28%, rgba(5,34,45,.09) 50%, transparent 76%),
+        radial-gradient(ellipse 74% 82% at -12% 112%, rgba(9,78,98,.18) 0%, rgba(5,44,58,.1) 38%, transparent 72%),
+        linear-gradient(145deg, rgba(2,18,24,.16) 0%, transparent 42%),
+        var(--bg);
+    }
+    .deck::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .11;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      z-index: 10;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 72px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 4vw, 64px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .logo {
+      width: clamp(178px, 18vw, 250px);
+      height: auto;
+      display: block;
+    }
+    .top-actions { display: flex; align-items: center; gap: 12px; }
+    .counter {
+      min-width: 54px;
+      color: var(--muted);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .12em;
+    }
+    .present {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      padding: 9px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .present:hover { background: var(--text); color: var(--bg); }
+    .present:active { transform: scale(.97); }
+    .present:focus-visible, .arrow:focus-visible, .dot:focus-visible, .thumb-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .slides {
+      position: relative;
+      min-height: 100dvh;
+    }
+    .slide {
+      position: absolute;
+      inset: 72px 0 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate3d(36px,0,0) scale(.992);
+      transition: opacity .5s var(--ease), transform .65s var(--ease), visibility 0s linear .65s;
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate3d(0,0,0) scale(1);
+      transition-delay: 0s;
+    }
+    .slide-inner {
+      width: min(1440px, 100%);
+      min-height: calc(100dvh - 72px);
+      margin: 0 auto;
+      padding: clamp(32px, 5vw, 76px) clamp(22px, 5vw, 76px) 100px;
+      display: grid;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(54px, 7.2vw, 112px);
+      line-height: .89;
+      letter-spacing: -.065em;
+      font-weight: 700;
+      max-width: 940px;
+    }
+    h2 {
+      margin-bottom: 22px;
+      font-size: clamp(40px, 4.7vw, 76px);
+      line-height: .97;
+      letter-spacing: -.018em;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    .idea-copy h2 {
+      letter-spacing: .01em;
+      line-height: 1.02;
+    }
+    h3 {
+      margin-bottom: 10px;
+      font-size: 17px;
+      letter-spacing: -.02em;
+    }
+    .lede {
+      margin-bottom: 32px;
+      max-width: 660px;
+      color: #c9ccc5;
+      font-size: clamp(17px, 1.6vw, 22px);
+      line-height: 1.45;
+    }
+    .accent { color: var(--accent); }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(440px, .92fr);
+      gap: clamp(30px, 6vw, 96px);
+      align-items: center;
+    }
+    .cover-copy { position: relative; z-index: 2; }
+    .cover-kicker {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .cover-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin-top: 38px;
+      color: #c4c7c0;
+      font-size: 13px;
+    }
+    .cover-meta strong { color: var(--text); }
+    .mosaic {
+      position: relative;
+      min-height: 520px;
+      perspective: 1300px;
+    }
+    .mosaic-card {
+      position: absolute;
+      width: min(90%, 540px);
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--surface);
+      transition: transform .5s var(--ease), filter .5s var(--ease);
+    }
+    .mosaic-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mosaic-card:nth-child(1) { top: 2%; right: 1%; transform: rotate(2deg); z-index: 4; }
+    .mosaic-card:nth-child(2) { top: 29%; left: 0; transform: rotate(-4deg) scale(.92); z-index: 3; filter: brightness(.72); }
+    .mosaic-card:nth-child(3) { bottom: 1%; right: 5%; transform: rotate(3deg) scale(.82); z-index: 2; filter: brightness(.55); }
+    .mosaic:hover .mosaic-card:nth-child(1) { transform: rotate(0deg) translateY(-10px); }
+    .mosaic:hover .mosaic-card:nth-child(2) { transform: rotate(-2deg) translate(-8px, 8px) scale(.93); filter: brightness(.86); }
+    .mosaic:hover .mosaic-card:nth-child(3) { transform: rotate(1deg) translate(10px, 10px) scale(.84); filter: brightness(.7); }
+
+    .idea-layout {
+      display: grid;
+      grid-template-columns: minmax(390px, .88fr) minmax(520px, 1.12fr);
+      gap: clamp(36px, 6vw, 92px);
+      align-items: center;
+    }
+    .idea-copy { max-width: 650px; }
+    .score-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 30px 0 32px;
+    }
+    .score {
+      padding: 17px 16px 15px;
+      border-top: 1px solid var(--line-strong);
+    }
+    .score strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: clamp(22px, 2vw, 30px);
+      letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .score.vidiq-high {
+      border-top-color: var(--positive);
+      background: var(--positive-bg);
+    }
+    .score.vidiq-high strong { color: var(--positive); }
+    .score span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .why {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 26px;
+    }
+    .why-item {
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .why-item p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .proof-board { min-width: 0; }
+    .proof-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.38fr) minmax(180px, .62fr);
+      overflow: hidden;
+      min-height: 314px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .proof-feature.single { grid-template-columns: 1fr; }
+    .proof-image { overflow: hidden; background: #050607; }
+    .proof-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s var(--ease), filter .6s var(--ease);
+    }
+    .proof-feature:hover .proof-image img { transform: scale(1.025); filter: saturate(1.08); }
+    .proof-stats {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .proof-title { margin: 0; color: #d6d8d2; font-size: 14px; line-height: 1.4; }
+    .big-stat {
+      display: block;
+      color: var(--accent);
+      font-size: clamp(38px, 4vw, 64px);
+      line-height: .9;
+      letter-spacing: -.055em;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .big-stat-label {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .proof-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .proof-line strong { color: var(--text); font-variant-numeric: tabular-nums; }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .thumb-link {
+      display: grid;
+      grid-template-columns: 42% 1fr;
+      min-height: 126px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-2);
+      text-decoration: none;
+      transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease);
+    }
+    .thumb-link:hover { border-color: var(--line-strong); transform: translateY(-3px); background: var(--surface-3); }
+    .thumb-link:active { transform: translateY(-1px) scale(.99); }
+    .thumb-link img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb-copy { padding: 15px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+    .thumb-copy p { margin: 0; font-size: 12px; line-height: 1.35; color: #d8dad4; }
+    .thumb-metric { color: var(--accent); font-weight: 750; font-size: 17px; letter-spacing: -.02em; }
+    .thumb-sub { display: block; color: var(--muted); font-size: 10px; margin-top: 3px; }
+    .snapshot { margin: 13px 4px 0; color: #777c76; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+
+    .outlier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .outlier-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      text-decoration: none;
+      box-shadow: 0 16px 38px rgba(0,6,18,.2);
+      transition: transform .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
+    }
+    .outlier-card:hover { transform: translateY(-4px); border-color: var(--line-strong); background: var(--surface-2); }
+    .outlier-card:active { transform: translateY(-1px) scale(.99); }
+    .outlier-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .outlier-info { min-height: 76px; padding: 10px 11px 11px; display: flex; flex-direction: column; justify-content: space-between; gap: 9px; }
+    .outlier-title {
+      min-width: 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      color: #e3ecfb;
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+    .outlier-stats { display: flex; align-items: baseline; gap: 7px; color: var(--muted); font-size: 9px; font-variant-numeric: tabular-nums; }
+    .outlier-stats strong { color: var(--accent); font-size: 15px; letter-spacing: -.02em; }
+    .outlier-stats span:last-child { margin-left: auto; }
+
+    .format-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+    .format-step { background: var(--surface); padding: 15px 16px; }
+    .format-step strong { display: block; margin-bottom: 6px; font-size: 12px; }
+    .format-step span { color: var(--muted); font-size: 11px; line-height: 1.35; }
+
+    .final-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.86fr) minmax(500px,1.14fr);
+      gap: clamp(40px, 8vw, 120px);
+      align-items: center;
+    }
+    .sequence { display: grid; gap: 12px; }
+    .sequence-row {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform .25s var(--ease), border-color .25s var(--ease);
+    }
+    .sequence-row:hover { transform: translateX(6px); border-color: var(--line-strong); }
+    .sequence-no { color: var(--accent); font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .sequence-title { font-size: 15px; font-weight: 650; }
+    .sequence-job { color: var(--muted); font-size: 11px; text-align: right; text-transform: uppercase; letter-spacing: .08em; }
+    .decision {
+      margin-top: 26px;
+      padding: 22px 0 0;
+      border-top: 1px solid var(--line-strong);
+      color: #d4d6d0;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .controls {
+      position: fixed;
+      z-index: 20;
+      inset: auto clamp(20px, 4vw, 64px) 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .dots { display: flex; gap: 7px; pointer-events: auto; }
+    .dot {
+      width: 26px;
+      height: 6px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      cursor: pointer;
+      transition: width .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
+    }
+    .dot:hover { background: rgba(255,255,255,.35); transform: scaleY(1.5); }
+    .dot.active { width: 46px; background: var(--accent); }
+    .arrows { display: flex; gap: 8px; pointer-events: auto; }
+    .arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(7,17,23,.92);
+      cursor: pointer;
+      font-size: 19px;
+      line-height: 1;
+      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), opacity .25s var(--ease);
+    }
+    .arrow:hover:not(:disabled) { background: var(--text); color: var(--bg); transform: translateY(-2px); }
+    .arrow:active:not(:disabled) { transform: translateY(0) scale(.96); }
+    .arrow:disabled { opacity: .25; cursor: default; }
+
+    .reveal { opacity: 0; transform: translateY(16px); }
+    .slide.active .reveal { animation: reveal .72s var(--ease) forwards; }
+    .slide.active .reveal:nth-child(2) { animation-delay: .06s; }
+    .slide.active .reveal:nth-child(3) { animation-delay: .12s; }
+    .slide.active .reveal:nth-child(4) { animation-delay: .18s; }
+    @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 1050px) {
+      .cover-grid, .idea-layout, .final-grid { grid-template-columns: 1fr; }
+      .cover-grid { padding-top: 12px; }
+      .mosaic { min-height: 430px; max-width: 760px; width: 100%; }
+      .idea-layout { align-items: start; }
+      .idea-copy { max-width: 760px; }
+      .proof-board { width: 100%; }
+      .outlier-grid { width: 100%; }
+      .final-grid { padding-top: 10px; }
+    }
+    @media (max-width: 720px) {
+      .topbar { height: 64px; padding: 0 18px; }
+      .logo { width: 168px; }
+      .present { display: none; }
+      .counter { min-width: auto; }
+      .slide { inset-top: 64px; }
+      .slide-inner { min-height: calc(100dvh - 64px); padding: 32px 18px 96px; align-items: start; }
+      h1 { font-size: clamp(50px, 15vw, 78px); }
+      h2 { font-size: clamp(38px, 11vw, 56px); }
+      .cover-grid { gap: 32px; }
+      .mosaic { min-height: 330px; }
+      .score-row { grid-template-columns: repeat(3, 1fr); }
+      .score { padding: 14px 8px 12px; }
+      .score strong { font-size: 22px; }
+      .why { grid-template-columns: 1fr; }
+      .proof-feature { grid-template-columns: 1fr; }
+      .proof-stats { padding: 20px; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .outlier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .format-strip { grid-template-columns: 1fr 1fr; }
+      .sequence-row { grid-template-columns: 34px 1fr; }
+      .sequence-job { grid-column: 2; text-align: left; }
+      .controls { inset: auto 18px 18px; }
+      .dots { gap: 5px; }
+      .dot { width: 16px; }
+      .dot.active { width: 28px; }
+      .arrow { width: 40px; height: 40px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .topbar { background: var(--bg); backdrop-filter: none; }
+    }
+
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      body { overflow: visible; background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .topbar, .controls { display: none !important; }
+      .slides { min-height: auto; }
+      .slide {
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+        min-height: 9in;
+        page-break-after: always;
+        overflow: hidden;
+      }
+      .slide-inner { min-height: 9in; padding: .55in .65in; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-label="Vibecode YouTube pitch deck">
+    <header class="topbar">
+      <img class="logo" src="assets/founder-funnel-logo.png" alt="Founder Funnel" />
+      <div class="top-actions">
+        <span class="counter" id="counter" aria-live="polite">01 / 04</span>
+        <button class="present" id="presentButton" type="button">Present</button>
+      </div>
+    </header>
+
+    <div class="slides" id="slides">
+      <section class="slide active" data-title="Before your first AI app" aria-hidden="false">
+        <div class="slide-inner">
+          <div class="idea-layout">
+            <div class="idea-copy">
+              <p class="eyebrow reveal">Idea 1</p>
+              <h2 class="reveal">Watch This Before You Build Your First AI App</h2>
+              <p class="lede reveal">Pick the right problem, scope the first version and avoid the mistakes that stop an app from reaching real users.</p>
+              <div class="score-row reveal">
+                <div class="score vidiq-high"><strong>90</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>20x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>6</strong><span>recent outliers</span></div>
+              </div>
+              <div class="why reveal">
+                <div class="why-item"><h3>Why this idea works</h3><p>A founder-first guide answers the questions viewers have before they spend time building. Vibecode can show each decision in practice.</p></div>
+                <div class="why-item"><h3>Video structure</h3><p>Validate the problem, choose a useful first workflow, test with real users and plan distribution before adding features.</p></div>
+              </div>
+            </div>
+            <div class="proof-board reveal">
+              <div class="outlier-grid">
+                <a class="outlier-card" href="https://youtube.com/watch?v=Iouhc5LHhjA" target="_blank" rel="noreferrer" title="I Built &amp; Published My First iOS App: Here’s What I’d Never Do Again | 103.1K views | 22.0K subs | published 2026-08-31 | metrics 2026-09-24">
+                  <img src="assets/fresh/Iouhc5LHhjA.jpg" alt="I Built &amp; Published My First iOS App: Here’s What I’d Never Do Again thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">I Built &amp; Published My First iOS App: Here’s What I’d Never Do Again</span><span class="outlier-stats"><strong>15.89x</strong><span>103.1K views</span><span>22.0K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=srE08GVlIUk" target="_blank" rel="noreferrer" title="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) | 13.1K views | 33.3K subs | published 2026-09-21 | metrics 2026-09-24">
+                  <img src="assets/fresh/srE08GVlIUk.jpg" alt="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method)</span><span class="outlier-stats"><strong>2.61x</strong><span>13.1K views</span><span>33.3K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=ZK-0mPddagU" target="_blank" rel="noreferrer" title="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish | 34.6K views | 24.3K subs | published 2026-08-28 | metrics 2026-09-24">
+                  <img src="assets/fresh/ZK-0mPddagU.jpg" alt="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish</span><span class="outlier-stats"><strong>4.23x</strong><span>34.6K views</span><span>24.3K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=nKvqgmHVBms" target="_blank" rel="noreferrer" title="Build an AI Agent Without Writing a Single Line of Code | 20.9K views | 1.6K subs | published 2026-08-30 | metrics 2026-09-24">
+                  <img src="assets/fresh/nKvqgmHVBms.jpg" alt="Build an AI Agent Without Writing a Single Line of Code thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Build an AI Agent Without Writing a Single Line of Code</span><span class="outlier-stats"><strong>20x</strong><span>20.9K views</span><span>1.6K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=lpeP6BcUlFU" target="_blank" rel="noreferrer" title="How to Build Real Mobile Apps with Claude - FULL COURSE | 11.2K views | 3.2K subs | published 2026-09-08 | metrics 2026-09-24">
+                  <img src="assets/fresh/lpeP6BcUlFU.jpg" alt="How to Build Real Mobile Apps with Claude - FULL COURSE thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">How to Build Real Mobile Apps with Claude - FULL COURSE</span><span class="outlier-stats"><strong>15.3x</strong><span>11.2K views</span><span>3.2K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=4M-kUY0u2bk" target="_blank" rel="noreferrer" title="The SIMPLEST Way to Build an App with AI in 2026 | 106.0K views | published Aug 2026 (screenshot: 1mo ago) | metrics user screenshot, 2026-09-24">
+                  <img src="assets/fresh/4M-kUY0u2bk.jpg" alt="The SIMPLEST Way to Build an App with AI in 2026 thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">The SIMPLEST Way to Build an App with AI in 2026</span><span class="outlier-stats"><strong>3x</strong><span>106.0K views</span><span>1mo ago</span></span></span>
+                </a>
+              </div>
+              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Complete app tutorial" aria-hidden="true">
+        <div class="slide-inner">
+          <div class="idea-layout">
+            <div class="idea-copy">
+              <p class="eyebrow reveal">Idea 2</p>
+              <h2 class="reveal">How to Build a Complete App With AI</h2>
+              <p class="lede reveal">Follow one useful app from first brief to working prototype, real test and launch. Show what breaks along the way.</p>
+              <div class="score-row reveal">
+                <div class="score vidiq-high"><strong>87</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>29.65x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>6</strong><span>recent outliers</span></div>
+              </div>
+              <div class="why reveal">
+                <div class="why-item"><h3>Why this idea works</h3><p>The strongest references show a complete project, not isolated features. A single app gives the tutorial a clear finish line.</p></div>
+                <div class="why-item"><h3>What to cover</h3><p>Brief, working interface, data flow, user test, fixes and launch. Show payments only when the example actually needs them.</p></div>
+              </div>
+            </div>
+            <div class="proof-board reveal">
+              <div class="outlier-grid">
+                <a class="outlier-card" href="https://youtube.com/watch?v=lpeP6BcUlFU" target="_blank" rel="noreferrer" title="How to Build Real Mobile Apps with Claude - FULL COURSE | 11.2K views | 3.2K subs | published 2026-09-08 | metrics 2026-09-24">
+                  <img src="assets/fresh/lpeP6BcUlFU.jpg" alt="How to Build Real Mobile Apps with Claude - FULL COURSE thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">How to Build Real Mobile Apps with Claude - FULL COURSE</span><span class="outlier-stats"><strong>15.3x</strong><span>11.2K views</span><span>3.2K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=wZXrM4jqGj4" target="_blank" rel="noreferrer" title="AI Studio + Stitch + Android Studio: Build an Earnings App (Full Tutorial) | 5.5K views | 11.0K subs | published 2026-09-01 | metrics 2026-09-24">
+                  <img src="assets/fresh/wZXrM4jqGj4.jpg" alt="AI Studio + Stitch + Android Studio: Build an Earnings App (Full Tutorial) thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">AI Studio + Stitch + Android Studio: Build an Earnings App (Full Tutorial)</span><span class="outlier-stats"><strong>20.81x</strong><span>5.5K views</span><span>11.0K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=-7ajktD8pOo" target="_blank" rel="noreferrer" title="Build a Multi-Agent AI Wedding Planner with LangChain | Full Project Step-by-Step | 47.4K views | 3.4K subs | published 2026-08-21 | metrics 2026-09-24">
+                  <img src="assets/fresh/-7ajktD8pOo.jpg" alt="Build a Multi-Agent AI Wedding Planner with LangChain | Full Project Step-by-Step thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Build a Multi-Agent AI Wedding Planner with LangChain | Full Project Step-by-Step</span><span class="outlier-stats"><strong>29.65x</strong><span>47.4K views</span><span>3.4K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=ZK-0mPddagU" target="_blank" rel="noreferrer" title="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish | 34.6K views | 24.3K subs | published 2026-08-28 | metrics 2026-09-24">
+                  <img src="assets/fresh/ZK-0mPddagU.jpg" alt="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish</span><span class="outlier-stats"><strong>4.23x</strong><span>34.6K views</span><span>24.3K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=ovP2XcR4J9I" target="_blank" rel="noreferrer" title="Build &amp; Deploy a Complete School Web App with React, Express, MongoDB | 11.9K views | 90.9K subs | published 2026-09-17 | metrics 2026-09-24">
+                  <img src="assets/fresh/ovP2XcR4J9I.jpg" alt="Build &amp; Deploy a Complete School Web App with React, Express, MongoDB thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Build &amp; Deploy a Complete School Web App with React, Express, MongoDB</span><span class="outlier-stats"><strong>4.15x</strong><span>11.9K views</span><span>90.9K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=4M-kUY0u2bk" target="_blank" rel="noreferrer" title="The SIMPLEST Way to Build an App with AI in 2026 | 106.0K views | published Aug 2026 (screenshot: 1mo ago) | metrics user screenshot, 2026-09-24">
+                  <img src="assets/fresh/4M-kUY0u2bk.jpg" alt="The SIMPLEST Way to Build an App with AI in 2026 thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">The SIMPLEST Way to Build an App with AI in 2026</span><span class="outlier-stats"><strong>3x</strong><span>106.0K views</span><span>1mo ago</span></span></span>
+                </a>
+              </div>
+              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Five founder skills" aria-hidden="true">
+        <div class="slide-inner">
+          <div class="idea-layout">
+            <div class="idea-copy">
+              <p class="eyebrow reveal">Idea 3</p>
+              <h2 class="reveal">5 Skills You Need to Build Apps With AI</h2>
+              <p class="lede reveal">Explain the five skills founders need to build useful apps with AI and apply each one inside Vibecode.</p>
+              <div class="score-row reveal">
+                <div class="score vidiq-high"><strong>92</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>20.57x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>6</strong><span>recent outliers</span></div>
+              </div>
+              <div class="why reveal">
+                <div class="why-item"><h3>Why this idea works</h3><p>Your software and business experience grounds each skill in a decision founders must make, rather than another list of AI tools.</p></div>
+                <div class="why-item"><h3>The five skills</h3><p>Problem selection, MVP scoping, clear instructions, testing broken flows and launching for real feedback.</p></div>
+              </div>
+            </div>
+            <div class="proof-board reveal">
+              <div class="outlier-grid">
+                <a class="outlier-card" href="https://youtube.com/watch?v=XN3xNJvWXsc" target="_blank" rel="noreferrer" title="Essential Skills for Becoming an AI Engineer: RAG, AI Agents, &amp; More | 384.6K views | 1790.0K subs | published 2026-09-13 | metrics 2026-09-20">
+                  <img src="assets/fresh/XN3xNJvWXsc.jpg" alt="Essential Skills for Becoming an AI Engineer: RAG, AI Agents, &amp; More thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Essential Skills for Becoming an AI Engineer: RAG, AI Agents, &amp; More</span><span class="outlier-stats"><strong>11.06x</strong><span>384.6K views</span><span>1790.0K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=EsB401dN5b4" target="_blank" rel="noreferrer" title="The 3 Skills That Separate Architects From Senior Developers | 83.9K views | 61.1K subs | published 2026-09-04 | metrics 2026-09-20">
+                  <img src="assets/fresh/EsB401dN5b4.jpg" alt="The 3 Skills That Separate Architects From Senior Developers thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">The 3 Skills That Separate Architects From Senior Developers</span><span class="outlier-stats"><strong>15.17x</strong><span>83.9K views</span><span>61.1K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=MltkRz94SWA" target="_blank" rel="noreferrer" title="The Most Important Skill for AI Engineers: Evals Explained | 40.0K views | 8.9K subs | published 2026-09-17 | metrics 2026-09-24">
+                  <img src="assets/fresh/MltkRz94SWA.jpg" alt="The Most Important Skill for AI Engineers: Evals Explained thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">The Most Important Skill for AI Engineers: Evals Explained</span><span class="outlier-stats"><strong>3.45x</strong><span>40.0K views</span><span>8.9K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=n9CSSSir3fE" target="_blank" rel="noreferrer" title="Claude Code Skills from First Principles | 15.1K views | 8.6K subs | published 2026-09-15 | metrics 2026-09-24">
+                  <img src="assets/fresh/n9CSSSir3fE.jpg" alt="Claude Code Skills from First Principles thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Claude Code Skills from First Principles</span><span class="outlier-stats"><strong>5.03x</strong><span>15.1K views</span><span>8.6K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=-BnIfH2J50I" target="_blank" rel="noreferrer" title="How Context Engineering Improves AI Coding Agents | 19.0K views | 89.8K subs | published 2026-09-03 | metrics 2026-09-20">
+                  <img src="assets/fresh/-BnIfH2J50I.jpg" alt="How Context Engineering Improves AI Coding Agents thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">How Context Engineering Improves AI Coding Agents</span><span class="outlier-stats"><strong>20.57x</strong><span>19.0K views</span><span>89.8K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=QjCyqvXOh10" target="_blank" rel="noreferrer" title="The AI Skills Giving Ordinary People an Unfair Advantage | 16.6K views | 11.3K subs | published 2026-09-04 | metrics 2026-09-20">
+                  <img src="assets/fresh/QjCyqvXOh10.jpg" alt="The AI Skills Giving Ordinary People an Unfair Advantage thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">The AI Skills Giving Ordinary People an Unfair Advantage</span><span class="outlier-stats"><strong>2.52x</strong><span>16.6K views</span><span>11.3K subs</span></span></span>
+                </a>
+              </div>
+              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Small business app ideas" aria-hidden="true">
+        <div class="slide-inner">
+          <div class="idea-layout">
+            <div class="idea-copy">
+              <p class="eyebrow reveal">Idea 4</p>
+              <h2 class="reveal">How I Built 3 AI Apps for Small Businesses</h2>
+              <p class="lede reveal">Build three apps for lead handling, customer access and internal operations, using a format already winning on small channels.</p>
+              <div class="score-row reveal">
+                <div class="score vidiq-high"><strong>90</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>19.92x</strong><span>anchor breakout</span></div>
+                <div class="score"><strong>6</strong><span>recent references</span></div>
+              </div>
+              <div class="why reveal">
+                <div class="why-item"><h3>Why this idea works</h3><p>Real business tasks make each build concrete: leads, customer access and day-to-day operations.</p></div>
+                <div class="why-item"><h3>Video structure</h3><p>Open with the business problem, demonstrate the app, and show what happened when you tested it.</p></div>
+              </div>
+            </div>
+            <div class="proof-board reveal">
+              <div class="outlier-grid">
+                <a class="outlier-card" href="https://youtube.com/watch?v=OIsKC7sJooU" target="_blank" rel="noreferrer" title="How I SOLO Build Apps That ACTUALLY Make Money in 2026 | 8.9K views | 7.3K subs | published Aug 2026 (screenshot: 1mo ago) | metrics user screenshot, 2026-09-24">
+                  <img src="assets/fresh/OIsKC7sJooU.jpg" alt="How I SOLO Build Apps That ACTUALLY Make Money in 2026 thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">How I SOLO Build Apps That ACTUALLY Make Money in 2026</span><span class="outlier-stats"><strong>4x</strong><span>8.9K views</span><span>7.3K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=xLwgYzdOD4A" target="_blank" rel="noreferrer" title="I Built an App People Actually Pay For! $10k | 29.1K views | 4.2K subs | published 2026-09-15 | metrics 2026-09-20">
+                  <img src="assets/fresh/xLwgYzdOD4A.jpg" alt="I Built an App People Actually Pay For! $10k thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">I Built an App People Actually Pay For! $10k</span><span class="outlier-stats"><strong>19.47x</strong><span>29.1K views</span><span>4.2K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=zVlqXgQLcag" target="_blank" rel="noreferrer" title="Stop Selling BORING Websites — Sell AI Talking Websites | 29.8K views | 4.3K subs | published 2026-09-03 | metrics 2026-09-20">
+                  <img src="assets/fresh/zVlqXgQLcag.jpg" alt="Stop Selling BORING Websites — Sell AI Talking Websites thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Stop Selling BORING Websites — Sell AI Talking Websites</span><span class="outlier-stats"><strong>19.92x</strong><span>29.8K views</span><span>4.3K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=2NLzwkSqdqw" target="_blank" rel="noreferrer" title="$8000 in 48 hours CHALLENGE with AI digital products | 37.0K views | 6.1K subs | published 2026-09-08 | metrics 2026-09-24">
+                  <img src="assets/fresh/2NLzwkSqdqw.jpg" alt="$8000 in 48 hours CHALLENGE with AI digital products thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">$8000 in 48 hours CHALLENGE with AI digital products</span><span class="outlier-stats"><strong>5.86x</strong><span>37.0K views</span><span>6.1K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=srE08GVlIUk" target="_blank" rel="noreferrer" title="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) | 13.1K views | 33.3K subs | published 2026-09-21 | metrics 2026-09-24">
+                  <img src="assets/fresh/srE08GVlIUk.jpg" alt="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method)</span><span class="outlier-stats"><strong>2.61x</strong><span>13.1K views</span><span>33.3K subs</span></span></span>
+                </a>
+                <a class="outlier-card" href="https://youtube.com/watch?v=mDOEonxf1l0" target="_blank" rel="noreferrer" title="I Gave 4 AI Agents One Product Launch - Teamily AI Built Everything | 80.4K views | 154.0K subs | published 2026-09-09 | metrics 2026-09-20">
+                  <img src="assets/fresh/mDOEonxf1l0.jpg" alt="I Gave 4 AI Agents One Product Launch - Teamily AI Built Everything thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">I Gave 4 AI Agents One Product Launch - Teamily AI Built Everything</span><span class="outlier-stats"><strong>2.87x</strong><span>80.4K views</span><span>154.0K subs</span></span></span>
+                </a>
+              </div>
+              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+
+    <nav class="controls" aria-label="Presentation controls">
+      <div class="dots" id="dots"></div>
+      <div class="arrows">
+        <button class="arrow" id="prevButton" type="button" aria-label="Previous page">←</button>
+        <button class="arrow" id="nextButton" type="button" aria-label="Next page">→</button>
+      </div>
+    </nav>
+  </main>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const dots = document.getElementById('dots');
+      const counter = document.getElementById('counter');
+      const prev = document.getElementById('prevButton');
+      const next = document.getElementById('nextButton');
+      const present = document.getElementById('presentButton');
+      let current = Math.max(0, Math.min(slides.length - 1, Number(location.hash.replace('#page-', '')) - 1 || 0));
+      let touchStartX = null;
+
+      slides.forEach((slide, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot';
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Open page ${index + 1}: ${slide.dataset.title}`);
+        dot.addEventListener('click', () => show(index));
+        dots.appendChild(dot);
+      });
+
+      const dotButtons = [...dots.children];
+      function show(index, updateHash = true) {
+        current = Math.max(0, Math.min(slides.length - 1, index));
+        slides.forEach((slide, i) => {
+          const active = i === current;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', String(!active));
+          if (active) slide.scrollTop = 0;
+          dotButtons[i].classList.toggle('active', active);
+          dotButtons[i].setAttribute('aria-current', active ? 'page' : 'false');
+        });
+        counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        document.title = `${slides[current].dataset.title} | Founder Funnel`;
+        if (updateHash) history.replaceState(null, '', `#page-${current + 1}`);
+      }
+
+      prev.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
+        if (event.key === 'Home') { event.preventDefault(); show(0); }
+        if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
+      });
+      document.addEventListener('touchstart', (event) => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+      document.addEventListener('touchend', (event) => {
+        if (touchStartX === null) return;
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) > 60) show(current + (delta < 0 ? 1 : -1));
+        touchStartX = null;
+      }, { passive: true });
+      present.addEventListener('click', async () => {
+        try {
+          if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+          else await document.exitFullscreen();
+        } catch (_) {}
+      });
+      document.addEventListener('fullscreenchange', () => {
+        present.textContent = document.fullscreenElement ? 'Exit' : 'Present';
+      });
+      window.addEventListener('hashchange', () => {
+        const requested = Number(location.hash.replace('#page-', '')) - 1;
+        if (Number.isInteger(requested)) show(requested, false);
+      });
+      show(current, false);
+    })();
+  </script>
+</body>
+</html>
