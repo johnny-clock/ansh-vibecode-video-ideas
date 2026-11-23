@@ -1,781 +1,141 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <title>Vibecode YouTube Ideas | Founder Funnel</title>
-  <style>
-    :root {
-      --bg: #000000;
-      --surface: #071117;
-      --surface-2: #0a1b23;
-      --surface-3: #0d2832;
-      --text: #f2f7f8;
-      --muted: #91a8b1;
-      --line: rgba(43,143,168,.18);
-      --line-strong: rgba(43,143,168,.38);
-      --accent: #2b8fa8;
-      --accent-ink: #020608;
-      --positive: #6de59b;
-      --positive-bg: rgba(109,229,155,.07);
-      --radius: 18px;
-      --ease: cubic-bezier(.16,1,.3,1);
-      --shadow: 0 26px 80px rgba(0,0,0,.34);
-      font-synthesis: none;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Vibecode YouTube Ideas | Founder Funnel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    button, a { font: inherit; }
-    button { color: inherit; }
-    a { color: inherit; }
-
-    .deck {
-      position: relative;
-      min-height: 100dvh;
-      isolation: isolate;
-      background:
-        radial-gradient(ellipse 92% 105% at 108% -12%, rgba(18,105,128,.28) 0%, rgba(11,72,91,.18) 28%, rgba(5,34,45,.09) 50%, transparent 76%),
-        radial-gradient(ellipse 74% 82% at -12% 112%, rgba(9,78,98,.18) 0%, rgba(5,44,58,.1) 38%, transparent 72%),
-        linear-gradient(145deg, rgba(2,18,24,.16) 0%, transparent 42%),
-        var(--bg);
-    }
-    .deck::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .11;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
-      z-index: 10;
-    }
-
-    .topbar {
-      position: fixed;
-      inset: 0 0 auto 0;
-      height: 72px;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 clamp(20px, 4vw, 64px);
-      border-bottom: 1px solid var(--line);
-      background: rgba(0,0,0,.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-    .logo {
-      width: clamp(178px, 18vw, 250px);
-      height: auto;
-      display: block;
-    }
-    .top-actions { display: flex; align-items: center; gap: 12px; }
-    .counter {
-      min-width: 54px;
-      color: var(--muted);
-      font-size: 12px;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: .12em;
-    }
-    .present {
-      border: 1px solid var(--line-strong);
-      background: transparent;
-      padding: 9px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .present:hover { background: var(--text); color: var(--bg); }
-    .present:active { transform: scale(.97); }
-    .present:focus-visible, .arrow:focus-visible, .dot:focus-visible, .thumb-link:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .slides {
-      position: relative;
-      min-height: 100dvh;
-    }
-    .slide {
-      position: absolute;
-      inset: 72px 0 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: translate3d(36px,0,0) scale(.992);
-      transition: opacity .5s var(--ease), transform .65s var(--ease), visibility 0s linear .65s;
-    }
-    .slide.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: translate3d(0,0,0) scale(1);
-      transition-delay: 0s;
-    }
-    .slide-inner {
-      width: min(1440px, 100%);
-      min-height: calc(100dvh - 72px);
-      margin: 0 auto;
-      padding: clamp(32px, 5vw, 76px) clamp(22px, 5vw, 76px) 100px;
-      display: grid;
-      align-items: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      margin-bottom: 22px;
-      font-size: clamp(54px, 7.2vw, 112px);
-      line-height: .89;
-      letter-spacing: -.065em;
-      font-weight: 700;
-      max-width: 940px;
-    }
-    h2 {
-      margin-bottom: 22px;
-      font-size: clamp(40px, 4.7vw, 76px);
-      line-height: .97;
-      letter-spacing: -.018em;
-      font-weight: 700;
-      text-wrap: balance;
-    }
-    .idea-copy h2 {
-      letter-spacing: .01em;
-      line-height: 1.02;
-    }
-    h3 {
-      margin-bottom: 10px;
-      font-size: 17px;
-      letter-spacing: -.02em;
-    }
-    .lede {
-      margin-bottom: 32px;
-      max-width: 660px;
-      color: #c9ccc5;
-      font-size: clamp(17px, 1.6vw, 22px);
-      line-height: 1.45;
-    }
-    .alt-title { margin: -8px 0 26px; max-width: 660px; color: var(--muted); font-size: clamp(15px, 1.3vw, 18px); line-height: 1.4; }
-    .alt-title span { display: block; margin-bottom: 5px; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-    .accent { color: var(--accent); }
-
-    .cover-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(440px, .92fr);
-      gap: clamp(30px, 6vw, 96px);
-      align-items: center;
-    }
-    .cover-copy { position: relative; z-index: 2; }
-    .cover-kicker {
-      max-width: 580px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.5;
-    }
-    .cover-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 24px;
-      margin-top: 38px;
-      color: #c4c7c0;
-      font-size: 13px;
-    }
-    .cover-meta strong { color: var(--text); }
-    .mosaic {
-      position: relative;
-      min-height: 520px;
-      perspective: 1300px;
-    }
-    .mosaic-card {
-      position: absolute;
-      width: min(90%, 540px);
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      background: var(--surface);
-      transition: transform .5s var(--ease), filter .5s var(--ease);
-    }
-    .mosaic-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .mosaic-card:nth-child(1) { top: 2%; right: 1%; transform: rotate(2deg); z-index: 4; }
-    .mosaic-card:nth-child(2) { top: 29%; left: 0; transform: rotate(-4deg) scale(.92); z-index: 3; filter: brightness(.72); }
-    .mosaic-card:nth-child(3) { bottom: 1%; right: 5%; transform: rotate(3deg) scale(.82); z-index: 2; filter: brightness(.55); }
-    .mosaic:hover .mosaic-card:nth-child(1) { transform: rotate(0deg) translateY(-10px); }
-    .mosaic:hover .mosaic-card:nth-child(2) { transform: rotate(-2deg) translate(-8px, 8px) scale(.93); filter: brightness(.86); }
-    .mosaic:hover .mosaic-card:nth-child(3) { transform: rotate(1deg) translate(10px, 10px) scale(.84); filter: brightness(.7); }
-
-    .idea-layout {
-      display: grid;
-      grid-template-columns: minmax(390px, .88fr) minmax(520px, 1.12fr);
-      gap: clamp(36px, 6vw, 92px);
-      align-items: center;
-    }
-    .idea-copy { max-width: 650px; }
-    .score-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 30px 0 32px;
-    }
-    .score {
-      padding: 17px 16px 15px;
-      border-top: 1px solid var(--line-strong);
-    }
-    .score strong {
-      display: block;
-      margin-bottom: 7px;
-      font-size: clamp(22px, 2vw, 30px);
-      letter-spacing: -.04em;
-      font-variant-numeric: tabular-nums;
-    }
-    .score.vidiq-high {
-      border-top-color: var(--positive);
-      background: var(--positive-bg);
-    }
-    .score.vidiq-high strong { color: var(--positive); }
-    .score span {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.35;
-      text-transform: uppercase;
-      letter-spacing: .09em;
-    }
-    .why {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px 26px;
-    }
-    .why-item {
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-    }
-    .why-item p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
-
-    .proof-board { min-width: 0; }
-    .proof-feature {
-      display: grid;
-      grid-template-columns: minmax(0, 1.38fr) minmax(180px, .62fr);
-      overflow: hidden;
-      min-height: 314px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-    }
-    .proof-feature.single { grid-template-columns: 1fr; }
-    .proof-image { overflow: hidden; background: #050607; }
-    .proof-image img {
-      width: 100%;
-      height: 100%;
-      min-height: 250px;
-      object-fit: cover;
-      display: block;
-      transition: transform .6s var(--ease), filter .6s var(--ease);
-    }
-    .proof-feature:hover .proof-image img { transform: scale(1.025); filter: saturate(1.08); }
-    .proof-stats {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .proof-title { margin: 0; color: #d6d8d2; font-size: 14px; line-height: 1.4; }
-    .big-stat {
-      display: block;
-      color: var(--accent);
-      font-size: clamp(38px, 4vw, 64px);
-      line-height: .9;
-      letter-spacing: -.055em;
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-    }
-    .big-stat-label {
-      display: block;
-      margin-top: 9px;
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-    .proof-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding-top: 10px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .proof-line strong { color: var(--text); font-variant-numeric: tabular-nums; }
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .thumb-link {
-      display: grid;
-      grid-template-columns: 42% 1fr;
-      min-height: 126px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface-2);
-      text-decoration: none;
-      transition: border-color .25s var(--ease), transform .25s var(--ease), background .25s var(--ease);
-    }
-    .thumb-link:hover { border-color: var(--line-strong); transform: translateY(-3px); background: var(--surface-3); }
-    .thumb-link:active { transform: translateY(-1px) scale(.99); }
-    .thumb-link img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .thumb-copy { padding: 15px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
-    .thumb-copy p { margin: 0; font-size: 12px; line-height: 1.35; color: #d8dad4; }
-    .thumb-metric { color: var(--accent); font-weight: 750; font-size: 17px; letter-spacing: -.02em; }
-    .thumb-sub { display: block; color: var(--muted); font-size: 10px; margin-top: 3px; }
-    .snapshot { margin: 13px 4px 0; color: #777c76; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
-
-    .outlier-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .outlier-grid.few { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .outlier-card {
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      text-decoration: none;
-      box-shadow: 0 16px 38px rgba(0,6,18,.2);
-      transition: transform .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
-    }
-    .outlier-card:hover { transform: translateY(-4px); border-color: var(--line-strong); background: var(--surface-2); }
-    .outlier-card:active { transform: translateY(-1px) scale(.99); }
-    .outlier-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
-    .outlier-info { min-height: 76px; padding: 10px 11px 11px; display: flex; flex-direction: column; justify-content: space-between; gap: 9px; }
-    .outlier-title {
-      min-width: 0;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      color: #e3ecfb;
-      font-size: 10.5px;
-      line-height: 1.3;
-    }
-    .outlier-stats { display: flex; align-items: baseline; gap: 7px; color: var(--muted); font-size: 9px; font-variant-numeric: tabular-nums; }
-    .outlier-stats strong { color: var(--accent); font-size: 15px; letter-spacing: -.02em; }
-    .outlier-stats span:last-child { margin-left: auto; }
-
-    .format-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      margin-top: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--line);
-    }
-    .format-step { background: var(--surface); padding: 15px 16px; }
-    .format-step strong { display: block; margin-bottom: 6px; font-size: 12px; }
-    .format-step span { color: var(--muted); font-size: 11px; line-height: 1.35; }
-
-    .final-grid {
-      display: grid;
-      grid-template-columns: minmax(0,.86fr) minmax(500px,1.14fr);
-      gap: clamp(40px, 8vw, 120px);
-      align-items: center;
-    }
-    .sequence { display: grid; gap: 12px; }
-    .sequence-row {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      gap: 18px;
-      align-items: center;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      transition: transform .25s var(--ease), border-color .25s var(--ease);
-    }
-    .sequence-row:hover { transform: translateX(6px); border-color: var(--line-strong); }
-    .sequence-no { color: var(--accent); font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
-    .sequence-title { font-size: 15px; font-weight: 650; }
-    .sequence-job { color: var(--muted); font-size: 11px; text-align: right; text-transform: uppercase; letter-spacing: .08em; }
-    .decision {
-      margin-top: 26px;
-      padding: 22px 0 0;
-      border-top: 1px solid var(--line-strong);
-      color: #d4d6d0;
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    .controls {
-      position: fixed;
-      z-index: 20;
-      inset: auto clamp(20px, 4vw, 64px) 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-    .dots { display: flex; gap: 7px; pointer-events: auto; }
-    .dot {
-      width: 26px;
-      height: 6px;
-      padding: 0;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(255,255,255,.18);
-      cursor: pointer;
-      transition: width .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
-    }
-    .dot:hover { background: rgba(255,255,255,.35); transform: scaleY(1.5); }
-    .dot.active { width: 46px; background: var(--accent); }
-    .arrows { display: flex; gap: 8px; pointer-events: auto; }
-    .arrow {
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      background: rgba(7,17,23,.92);
-      cursor: pointer;
-      font-size: 19px;
-      line-height: 1;
-      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), opacity .25s var(--ease);
-    }
-    .arrow:hover:not(:disabled) { background: var(--text); color: var(--bg); transform: translateY(-2px); }
-    .arrow:active:not(:disabled) { transform: translateY(0) scale(.96); }
-    .arrow:disabled { opacity: .25; cursor: default; }
-
-    .reveal { opacity: 0; transform: translateY(16px); }
-    .slide.active .reveal { animation: reveal .72s var(--ease) forwards; }
-    .slide.active .reveal:nth-child(2) { animation-delay: .06s; }
-    .slide.active .reveal:nth-child(3) { animation-delay: .12s; }
-    .slide.active .reveal:nth-child(4) { animation-delay: .18s; }
-    @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
-
-    @media (max-width: 1050px) {
-      .cover-grid, .idea-layout, .final-grid { grid-template-columns: 1fr; }
-      .cover-grid { padding-top: 12px; }
-      .mosaic { min-height: 430px; max-width: 760px; width: 100%; }
-      .idea-layout { align-items: start; }
-      .idea-copy { max-width: 760px; }
-      .proof-board { width: 100%; }
-      .outlier-grid { width: 100%; }
-      .final-grid { padding-top: 10px; }
-    }
-    @media (max-width: 720px) {
-      .topbar { height: 64px; padding: 0 18px; }
-      .logo { width: 168px; }
-      .present { display: none; }
-      .counter { min-width: auto; }
-      .slide { inset-top: 64px; }
-      .slide-inner { min-height: calc(100dvh - 64px); padding: 32px 18px 96px; align-items: start; }
-      h1 { font-size: clamp(50px, 15vw, 78px); }
-      h2 { font-size: clamp(38px, 11vw, 56px); }
-      .cover-grid { gap: 32px; }
-      .mosaic { min-height: 330px; }
-      .score-row { grid-template-columns: repeat(3, 1fr); }
-      .score { padding: 14px 8px 12px; }
-      .score strong { font-size: 22px; }
-      .why { grid-template-columns: 1fr; }
-      .proof-feature { grid-template-columns: 1fr; }
-      .proof-stats { padding: 20px; }
-      .proof-grid { grid-template-columns: 1fr; }
-      .outlier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .format-strip { grid-template-columns: 1fr 1fr; }
-      .sequence-row { grid-template-columns: 34px 1fr; }
-      .sequence-job { grid-column: 2; text-align: left; }
-      .controls { inset: auto 18px 18px; }
-      .dots { gap: 5px; }
-      .dot { width: 16px; }
-      .dot.active { width: 28px; }
-      .arrow { width: 40px; height: 40px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-    @media (prefers-reduced-transparency: reduce) {
-      .topbar { background: var(--bg); backdrop-filter: none; }
-    }
-
-    @media print {
-      @page { size: 16in 9in; margin: 0; }
-      body { overflow: visible; background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .topbar, .controls { display: none !important; }
-      .slides { min-height: auto; }
-      .slide {
-        position: relative;
-        inset: auto;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: none;
-        min-height: 9in;
-        page-break-after: always;
-        overflow: hidden;
-      }
-      .slide-inner { min-height: 9in; padding: .55in .65in; }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+:root{
+--paper:#F8F7F3;--ink:#1A1917;--muted:rgba(26,25,23,.6);--rule:rgba(26,25,23,.11);--red:#CA433C;--red-ink:#C33E37;--green:#00A870;
+--card:#FFFFFF;--card-2:#F8F7F3;--card-rule:rgba(26,25,23,.09);
+--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0D0D0D;--ink:#F8F7F3;--muted:rgba(248,247,243,.6);--rule:rgba(248,247,243,.12);--green:#00B67A;--card:#161614;--card-2:#1D1D1A;--card-rule:rgba(248,247,243,.08)}}
+:root[data-theme="dark"]{--paper:#0D0D0D;--ink:#F8F7F3;--muted:rgba(248,247,243,.6);--rule:rgba(248,247,243,.12);--green:#00B67A;--card:#161614;--card-2:#1D1D1A;--card-rule:rgba(248,247,243,.08)}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;-webkit-font-smoothing:antialiased;overflow:hidden}
+a,button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.deck{height:100%;display:flex;flex-direction:column}
+.top{flex:none;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5vw,80px);border-bottom:1px solid var(--rule)}
+.logo{display:block;width:168px;height:24px;background:var(--ink);-webkit-mask:url(assets/founder-funnel-logo.png) left center/contain no-repeat;mask:url(assets/founder-funnel-logo.png) left center/contain no-repeat}
+.top-r{display:flex;align-items:center;gap:16px}
+.count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.cta{background:var(--red);color:#fff;border:0;border-radius:3px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer}
+.cta:hover{background:var(--red-ink)}
+.slides{position:relative;flex:1;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s .4s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .4s ease}
+.slide.wip{overflow:hidden}.slide.wip .inner{filter:blur(10px);opacity:.55;user-select:none}
+.wipl{position:absolute;inset:0;z-index:2;display:grid;place-items:center;padding-bottom:60px}
+.wipl span{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);background:var(--ink);border-radius:3px;padding:10px 16px}
+.inner{max-width:1560px;margin:0 auto;padding:clamp(40px,8vh,88px) clamp(24px,5vw,80px) 120px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:start}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-ink);margin:0 0 20px}
+h2{font-weight:600;font-size:clamp(26px,2.5vw,36px);line-height:1.12;letter-spacing:-.03em;margin:0 0 16px;text-wrap:balance}
+.alt{font-size:15px;line-height:1.45;color:var(--muted);margin:-4px 0 20px;max-width:52ch}.alt span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.lede{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 36px;max-width:52ch}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 0 10px}
+.stat{padding:18px 0 16px 20px;border-left:1px solid var(--rule)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.stat dd{margin:0;font-weight:600;font-size:clamp(22px,1.9vw,28px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat dd small{font-size:12px;font-weight:400;color:var(--muted);letter-spacing:0;margin-left:2px}
+.stat .g{color:var(--green)}
+.dnote{font-size:12.5px;color:var(--muted);margin:0 0 40px}
+.blk{margin:0 0 28px}
+.blk h3{font-size:13.5px;font-weight:600;margin:0 0 8px}
+.blk p{margin:0;font-size:15px;line-height:1.7;max-width:58ch;color:var(--ink);opacity:.86}
+.proof{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:clamp(18px,2vw,28px)}
+.ph{display:flex;justify-content:space-between;align-items:baseline;margin:0 2px 18px}
+.ph h3{font-size:14px;font-weight:600;margin:0}
+.ph span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.refs{display:grid;gap:4px}
+.ref{display:grid;grid-template-columns:144px 1fr;gap:18px;align-items:center;padding:12px;border-radius:7px;border:1px solid transparent;text-decoration:none;transition:background .2s,border-color .2s}
+.ref:hover{background:var(--card-2)}
+.ref.src{border-color:var(--card-rule);background:var(--card-2)}
+.th{position:relative;display:block;aspect-ratio:16/9;border-radius:4px;overflow:hidden;background:var(--card-2)}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rb{display:grid;gap:5px;min-width:0}
+.big{display:flex;align-items:baseline;gap:8px}
+.big strong{font-size:22px;font-weight:700;color:var(--green);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.big span{font-size:12px;color:var(--muted)}
+.tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-ink)}
+.rt{font-size:14px;font-weight:500;line-height:1.35}
+.rm{display:flex;flex-wrap:wrap;gap:2px 12px;font-size:12px;color:var(--muted)}
+.pn{font-size:12px;color:var(--muted);margin:18px 2px 0;line-height:1.55}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px clamp(24px,5vw,80px) calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--paper) 62%,transparent);pointer-events:none}
+.nav>*{pointer-events:auto}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1px solid var(--rule);background:var(--paper);border-radius:3px;padding:6px 11px;font-size:12.5px;cursor:pointer;color:var(--muted)}
+.tab b{font-family:var(--mono);font-weight:400;margin-right:6px}
+.tab[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.arrows{display:flex;gap:8px}
+.ar{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--rule);background:var(--paper);border-radius:3px;cursor:pointer}
+.ar:hover{border-color:var(--ink)}
+.ar svg{width:15px;height:15px}
+.on .copy,.on .proof{animation:up .5s cubic-bezier(.16,1,.3,1) both}
+.on .proof{animation-delay:.06s}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:1020px){.inner{grid-template-columns:1fr}.tab span{display:none}}
+@media (max-width:560px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--rule)}
+.ref{grid-template-columns:104px 1fr;gap:12px;padding:8px}.big strong{font-size:19px}.cta{display:none}.logo{width:110px}}
+</style>
 </head>
 <body>
-  <main class="deck" aria-label="Vibecode YouTube pitch deck">
-    <header class="topbar">
-      <img class="logo" src="assets/founder-funnel-logo.png" alt="Founder Funnel" />
-      <div class="top-actions">
-        <span class="counter" id="counter" aria-live="polite">01 / 04</span>
-        <button class="present" id="presentButton" type="button">Present</button>
-      </div>
-    </header>
-
-    <div class="slides" id="slides">
-      <section class="slide active" data-title="Smart bed hack" aria-hidden="false">
-        <div class="slide-inner">
-          <div class="idea-layout">
-            <div class="idea-copy">
-              <p class="eyebrow reveal">Idea 1</p>
-              <h2 class="reveal">I Hacked My Smart Bed With AI (and Built My Own App for It)</h2>
-              <p class="alt-title reveal"><span>Alternative</span>Everyone’s Letting AI Hack Their Gadgets… So I Hacked My Bed</p>
-              <p class="lede reveal">Ansh unlocks his Eight Sleep with the open-source Free Sleep project, using AI as the guide, then builds his own control app for it in Vibecode.</p>
-              <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>98</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>1,212x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>3</strong><span>recent outliers</span></div>
-              </div>
-              <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>“AI hacks something I own” videos are breaking out on tiny channels: a car at 1,212x, a roundup at 1,017x and a TV at 913x. Nobody has done an Eight Sleep yet.</p></div>
-                <div class="why-item"><h3>Video structure</h3><p>Unlock the bed with Free Sleep and AI as the guide, build a control app in Vibecode on his phone, then run a real night on it side by side with the official app.</p></div>
-              </div>
-            </div>
-            <div class="proof-board reveal">
-              <div class="outlier-grid">
-                <a class="outlier-card" href="https://youtube.com/watch?v=W7ogaG4TlGc" target="_blank" rel="noreferrer" title="Watch Claude Code hack my dad&#x27;s car in 5 minutes | 529.6K views | 5.5K subs | published 2026-07-20 | metrics 2026-11-23">
-                  <img src="assets/fresh/W7ogaG4TlGc.jpg" alt="Watch Claude Code hack my dad&#x27;s car in 5 minutes thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Watch Claude Code hack my dad&#x27;s car in 5 minutes</span><span class="outlier-stats"><strong>1,212x</strong><span>529.6K views</span><span>5.5K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=YtBrjCXQUkg" target="_blank" rel="noreferrer" title="People Are Using AI to Hack Everything They Own | 1.4M views | 19.7K subs | published 2026-10-26 | metrics 2026-11-23">
-                  <img src="assets/fresh/YtBrjCXQUkg.jpg" alt="People Are Using AI to Hack Everything They Own thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">People Are Using AI to Hack Everything They Own</span><span class="outlier-stats"><strong>1,017x</strong><span>1.4M views</span><span>19.7K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=aN-65z6bvKk" target="_blank" rel="noreferrer" title="Everyone’s Letting AI Hack Their TVs… So I Tried It | 1.1M views | 4.6K subs | published 2026-11-15 | metrics 2026-11-23">
-                  <img src="assets/fresh/aN-65z6bvKk.jpg" alt="Everyone’s Letting AI Hack Their TVs… So I Tried It thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Everyone’s Letting AI Hack Their TVs… So I Tried It</span><span class="outlier-stats"><strong>913x</strong><span>1.1M views</span><span>4.6K subs</span></span></span>
-                </a>
-              </div>
-              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" data-title="Claude for business" aria-hidden="true">
-        <div class="slide-inner">
-          <div class="idea-layout">
-            <div class="idea-copy">
-              <p class="eyebrow reveal">Idea 2</p>
-              <h2 class="reveal">21 Life-Changing Ways to Use Claude for Your Business in 2027</h2>
-              <p class="alt-title reveal"><span>Alternative</span>People Are Using Claude to Run Their Entire Business Now</p>
-              <p class="lede reveal">A fast roundup of real things businesses did with Claude, each with its source on screen.</p>
-              <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>88</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>94x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>2</strong><span>recent outliers</span></div>
-              </div>
-              <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>Nick Saraev’s “33 Life-Changing Ways to Use Claude in 2027” is at 1.5M views (13x), and a construction-only copy hit 94x on a 1.4K-subscriber channel. “Claude for small business” gets about 90K searches a month, up 60%.</p></div>
-                <div class="why-item"><h3>Video structure</h3><p>Each item is a real business use with its source on screen. Vibecode comes in on “replace an app you pay for” and “build a customer app”. It covers other businesses rather than Ansh’s own work, so it stays apart from his Dots and Grok Bot videos.</p></div>
-              </div>
-            </div>
-            <div class="proof-board reveal">
-              <div class="outlier-grid few">
-                <a class="outlier-card" href="https://youtube.com/watch?v=kEGSIYF27Yw" target="_blank" rel="noreferrer" title="13 Ways to Use Claude in Construction in 2027. | 12.9K views | 1.4K subs | published 2026-11-18 | metrics 2026-11-23">
-                  <img src="assets/fresh/kEGSIYF27Yw.jpg" alt="13 Ways to Use Claude in Construction in 2027. thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">13 Ways to Use Claude in Construction in 2027.</span><span class="outlier-stats"><strong>94x</strong><span>12.9K views</span><span>1.4K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=KDyPHt4lW60" target="_blank" rel="noreferrer" title="33 Life-Changing Ways to Use Claude in 2027 | 1.5M views | 645K subs | published 2026-11-02 | metrics 2026-11-23">
-                  <img src="assets/fresh/KDyPHt4lW60.jpg" alt="33 Life-Changing Ways to Use Claude in 2027 thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">33 Life-Changing Ways to Use Claude in 2027</span><span class="outlier-stats"><strong>13x</strong><span>1.5M views</span><span>645K subs</span></span></span>
-                </a>
-              </div>
-              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" data-title="Antigravity guide" aria-hidden="true">
-        <div class="slide-inner">
-          <div class="idea-layout">
-            <div class="idea-copy">
-              <p class="eyebrow reveal">Idea 3</p>
-              <h2 class="reveal">Learn 96% of Google Antigravity in [X] Minutes</h2>
-              <p class="lede reveal">A beginner’s guide built around the new Antigravity features, ending where Antigravity stops: getting an app onto your phone. A search experiment, since it’s a developer tool.</p>
-              <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>94</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>45x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>1</strong><span>recent outlier</span></div>
-              </div>
-              <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>“Google antigravity” gets about 1.7M searches a month and “how to use google antigravity” about 104K. The “Learn X% in Y minutes” format is proven, and the existing “Learn 90%” Antigravity video came out before the November updates.</p></div>
-                <div class="why-item"><h3>Video structure</h3><p>Knowledge Work mode, Remote Agents, Voice Mode and the Orchestrator, then the step Antigravity can’t do, getting the app onto your phone, which is where Vibecode comes in. [X] becomes the final cut’s runtime.</p></div>
-              </div>
-            </div>
-            <div class="proof-board reveal">
-              <div class="outlier-grid few">
-                <a class="outlier-card" href="https://youtube.com/watch?v=O2vgG9sf7CI" target="_blank" rel="noreferrer" title="Learn 95% of Grok Bot in 22 minutes | 44.4K views | 4.4K subs | published 2026-09-04 | metrics 2026-11-23">
-                  <img src="assets/fresh/O2vgG9sf7CI.jpg" alt="Learn 95% of Grok Bot in 22 minutes thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Learn 95% of Grok Bot in 22 minutes</span><span class="outlier-stats"><strong>45x</strong><span>44.4K views</span><span>4.4K subs</span></span></span>
-                </a>
-              </div>
-              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" data-title="Grok Bot clone" aria-hidden="true">
-        <div class="slide-inner">
-          <div class="idea-layout">
-            <div class="idea-copy">
-              <p class="eyebrow reveal">Idea 4</p>
-              <h2 class="reveal">I Rebuilt Grok Bot for $[real build cost] (and It Has No Limits)</h2>
-              <p class="alt-title reveal"><span>Alternative</span>Grok Bot Cut My Limits… So I Vibe Coded My Own</p>
-              <p class="lede reveal">Ansh rebuilds Grok Bot from one prompt in Vibecode, installs it on his phone and puts it side by side with the real thing.</p>
-              <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>93</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>14x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>1</strong><span>recent outlier</span></div>
-              </div>
-              <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>Grok Bot users have been hitting their limits much faster, and Musk has said costs were “unsustainably high” relative to revenue. “Grok Bot Cut My Limits… So I Built My Own” hit 14x. On Ansh’s channel, AI-product clones (Muse 3.9K views, Duet 3.1K) beat the CapCut clone (147).</p></div>
-                <div class="why-item"><h3>Video structure</h3><p>Same structure as the Muse video: one prompt in Vibecode, installed on his phone, side by side with the real Grok Bot, ending with a cost comparison. It makes clear that “no limits” means no weekly cap, since he still pays his own API costs.</p></div>
-              </div>
-            </div>
-            <div class="proof-board reveal">
-              <div class="outlier-grid few">
-                <a class="outlier-card" href="https://youtube.com/watch?v=vNpJz-K644k" target="_blank" rel="noreferrer" title="Grok Bot Cut My Limits... So I Built My Own (Open Source) | 96.5K views | 15.0K subs | published 2026-11-09 | metrics 2026-11-23">
-                  <img src="assets/fresh/vNpJz-K644k.jpg" alt="Grok Bot Cut My Limits... So I Built My Own (Open Source) thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Grok Bot Cut My Limits... So I Built My Own (Open Source)</span><span class="outlier-stats"><strong>14x</strong><span>96.5K views</span><span>15.0K subs</span></span></span>
-                </a>
-              </div>
-              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-    </div>
-
-    <nav class="controls" aria-label="Presentation controls">
-      <div class="dots" id="dots"></div>
-      <div class="arrows">
-        <button class="arrow" id="prevButton" type="button" aria-label="Previous page">←</button>
-        <button class="arrow" id="nextButton" type="button" aria-label="Next page">→</button>
-      </div>
-    </nav>
-  </main>
-
-  <script>
-    (() => {
-      const slides = [...document.querySelectorAll('.slide')];
-      const dots = document.getElementById('dots');
-      const counter = document.getElementById('counter');
-      const prev = document.getElementById('prevButton');
-      const next = document.getElementById('nextButton');
-      const present = document.getElementById('presentButton');
-      let current = Math.max(0, Math.min(slides.length - 1, Number(location.hash.replace('#page-', '')) - 1 || 0));
-      let touchStartX = null;
-
-      slides.forEach((slide, index) => {
-        const dot = document.createElement('button');
-        dot.className = 'dot';
-        dot.type = 'button';
-        dot.setAttribute('aria-label', `Open page ${index + 1}: ${slide.dataset.title}`);
-        dot.addEventListener('click', () => show(index));
-        dots.appendChild(dot);
-      });
-
-      const dotButtons = [...dots.children];
-      function show(index, updateHash = true) {
-        current = Math.max(0, Math.min(slides.length - 1, index));
-        slides.forEach((slide, i) => {
-          const active = i === current;
-          slide.classList.toggle('active', active);
-          slide.setAttribute('aria-hidden', String(!active));
-          if (active) slide.scrollTop = 0;
-          dotButtons[i].classList.toggle('active', active);
-          dotButtons[i].setAttribute('aria-current', active ? 'page' : 'false');
-        });
-        counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-        prev.disabled = current === 0;
-        next.disabled = current === slides.length - 1;
-        document.title = `${slides[current].dataset.title} | Founder Funnel`;
-        if (updateHash) history.replaceState(null, '', `#page-${current + 1}`);
-      }
-
-      prev.addEventListener('click', () => show(current - 1));
-      next.addEventListener('click', () => show(current + 1));
-      document.addEventListener('keydown', (event) => {
-        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
-        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
-        if (event.key === 'Home') { event.preventDefault(); show(0); }
-        if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
-      });
-      document.addEventListener('touchstart', (event) => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
-      document.addEventListener('touchend', (event) => {
-        if (touchStartX === null) return;
-        const delta = event.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(delta) > 60) show(current + (delta < 0 ? 1 : -1));
-        touchStartX = null;
-      }, { passive: true });
-      present.addEventListener('click', async () => {
-        try {
-          if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
-          else await document.exitFullscreen();
-        } catch (_) {}
-      });
-      document.addEventListener('fullscreenchange', () => {
-        present.textContent = document.fullscreenElement ? 'Exit' : 'Present';
-      });
-      window.addEventListener('hashchange', () => {
-        const requested = Number(location.hash.replace('#page-', '')) - 1;
-        if (Number.isInteger(requested)) show(requested, false);
-      });
-      show(current, false);
-    })();
-  </script>
+<main class="deck">
+<header class="top">
+<span class="logo" role="img" aria-label="Founder Funnel"></span>
+<div class="top-r"><span class="count" id="count">1 / 4</span><button class="cta" id="present" type="button">Present</button></div>
+</header>
+<div class="slides" id="slides"></div>
+<nav class="nav" aria-label="Ideas"><div class="tabs" id="tabs"></div>
+<div class="arrows"><button class="ar" id="prev" type="button" aria-label="Previous idea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button class="ar" id="next" type="button" aria-label="Next idea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div></nav>
+</main>
+<script>
+var D=[{"t":"I Hacked My Smart Bed With AI (and Built My Own App for It)","a":"Everyone’s Letting AI Hack Their Gadgets… So I Hacked My Bed","s":98,"sh":"Smart bed hack","l":"Ansh unlocks his Eight Sleep with the open-source Free Sleep project, using AI as the guide, then builds his own control app for it in Vibecode.","dm":"Browse","dn":"No reliable search figure. Built for browse and suggested, like the hack videos it follows.","w":"“AI hacks something I own” videos are breaking out on tiny channels: a car at 1,212x, a roundup at 1,017x and a TV at 913x, each on a channel under 20K subscribers. Nobody has done an Eight Sleep yet.","c":"Unlock the bed with Free Sleep and AI as the guide, build a control app in Vibecode on his phone, then run a real night on it side by side with the official app.","r":[["W7ogaG4TlGc","Watch Claude Code hack my dad's car in 5 minutes","Yotty Labs","5.5K","529.6K","1,212","20 Jul",0,"713"],["YtBrjCXQUkg","People Are Using AI to Hack Everything They Own","Slop Architect","19.7K","1.4M","1,017","26 Oct",0,"226"],["aN-65z6bvKk","Everyone’s Letting AI Hack Their TVs… So I Tried It","RelfWolf","4.6K","1.1M","913","15 Nov",0,"1,453"]]},{"t":"21 Life-Changing Ways to Use Claude for Your Business in 2027","a":"People Are Using Claude to Run Their Entire Business Now","s":88,"sh":"Claude for business","l":"A fast roundup of real things businesses did with Claude, each with its source on screen.","dm":"90K","dn":"monthly searches for “claude for small business”, up 60%","w":"Nick Saraev’s “33 Life-Changing Ways to Use Claude in 2027” is at 1.5M views (13x), and a construction-only copy hit 94x on a 1.4K-subscriber channel. People are searching for this too: “claude for small business” gets about 90K searches a month, up 60%.","c":"Each item is a real business use with its source on screen. Vibecode comes in on “replace an app you pay for” and “build a customer app”. It covers other businesses rather than Ansh’s own work, so it stays apart from his Dots and Grok Bot videos.","r":[["KDyPHt4lW60","33 Life-Changing Ways to Use Claude in 2027","Nick Saraev","645K","1.5M","13","2 Nov",1,"1,054"],["kEGSIYF27Yw","13 Ways to Use Claude in Construction in 2027.","Toby Quirk","1.4K","12.9K","94","18 Nov",0,"57.1"]]},{"t":"Learn 96% of Google Antigravity in [X] Minutes","s":94,"sh":"Antigravity guide","l":"A beginner’s guide built around the new Antigravity features, ending where Antigravity stops: getting an app onto your phone. A search experiment, since it’s a developer tool.","dm":"1.7M","dn":"monthly searches for “google antigravity”; “how to use google antigravity” gets about 104K","w":"Antigravity has big search demand, and beginner guides on it keep pulling views: Mikey No Code’s “Master 85% of Antigravity in 19 minutes” is at 251K views, and James NoCode’s “Learn 90%” hit 6.2x. Both came out before the November updates. The “Learn X% in Y minutes” format is proven, with the Grok Bot version at 45x.","c":"Knowledge Work mode, Remote Agents, Voice Mode and the Orchestrator, then the step Antigravity can’t do, getting the app onto your phone, which is where Vibecode comes in. [X] becomes the final cut’s runtime.","r":[["O2vgG9sf7CI","Learn 95% of Grok Bot in 22 minutes","Brandon Charleson","4.4K","44.4K","45","4 Sep",1,"2.6"],["0IPMke6hi1Y","Learn 90% of Google Antigravity in Under 20 Minutes (2026 Update)","James NoCode","58.4K","39.5K","6.2","8 Sep",0,"9.8"],["ixAjUt9Uu3o","How Complete Beginners Master 85% of Antigravity in 19 minutes","Mikey No Code","180K","251.5K","1.8","24 Sep",0,"135"]]},{"t":"I Rebuilt Grok Bot for $[real build cost] (and It Has No Limits)","a":"Grok Bot Cut My Limits… So I Vibe Coded My Own","s":93,"sh":"Grok Bot clone","l":"Ansh rebuilds Grok Bot from one prompt in Vibecode, installs it on his phone and puts it side by side with the real thing.","dm":"Browse","dn":"No reliable search figure. Built for browse and suggested, like the clone videos it follows.","w":"Grok Bot users have been hitting their limits much faster, and Musk has said costs were “unsustainably high” relative to revenue. “Grok Bot Cut My Limits… So I Built My Own” hit 14x, and rebuild-it-cheaper videos are working elsewhere too: Jordan Rafealov’s $34 rebuild of a $1,995 AI system hit 7.1x and Albert Olgaard’s Higgsfield clone 7.8x. On Ansh’s channel, AI-product clones (Muse 3.9K views, Duet 3.1K) beat the CapCut clone (147).","c":"Same structure as the Muse video: one prompt in Vibecode, installed on his phone, side by side with the real Grok Bot, ending with a cost comparison. It makes clear that “no limits” means no weekly cap, since he still pays his own API costs.","r":[["jy1Tvd76f70","I Built Iman Gadzhi's $1,995 AI System for $34","Jordan Rafealov","21.3K","164.3K","7.1","10 Nov",1,"42.2"],["vNpJz-K644k","Grok Bot Cut My Limits... So I Built My Own (Open Source)","Nick Vasilescu","15K","96.5K","14","9 Nov",0,"87.5"],["hRr-yUSM0_A","Dear Higgsfield, I cloned you in 1 hour","Albert Olgaard","94.3K","175.7K","7.8","12 Oct",0,"8.5"]]}];
+(function(){
+function e(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+var S=document.getElementById('slides'),T=document.getElementById('tabs'),C=document.getElementById('count'),h='';
+D.forEach(function(d,n){
+var best=Math.max.apply(null,d.r.map(function(r){return parseFloat(r[5])}));
+h+='<section class="slide'+(d.wip?' wip':'')+'" aria-hidden="true">'+(d.wip?'<div class="wipl"><span>In progress</span></div>':'')+'<div class="inner"'+(d.wip?' inert':'')+'><div class="copy">'+
+'<p class="eyebrow">Vibecode · Idea '+(n+1)+' of '+D.length+'</p><h2>'+e(d.t)+'</h2>'+(d.a?'<p class="alt"><span>Alternative</span>'+e(d.a)+'</p>':'')+'<p class="lede">'+e(d.l)+'</p>'+
+'<dl class="stats"><div class="stat"><dt>vidIQ title score</dt><dd>'+d.s+'<small>/100</small></dd></div>'+
+'<div class="stat"><dt>Best outlier</dt><dd class="g">'+best+'x</dd></div>'+
+'<div class="stat"><dt>Search demand</dt><dd>'+d.dm+(/[0-9]/.test(d.dm)?'<small>/mo</small>':'')+'</dd></div></dl>'+
+'<p class="dnote">'+e(d.dn)+'</p>'+
+'<div class="blk"><h3>Why this idea works</h3><p>'+e(d.w)+'</p></div>'+
+'<div class="blk"><h3>What we’d cover</h3><p>'+e(d.c)+'</p></div>'+
+'</div>'+
+'<aside class="proof" aria-label="Outliers for idea '+(n+1)+'"><div class="ph"><h3>Outliers behind this title</h3><span>'+d.r.length+' videos</span></div><div class="refs">'+
+d.r.map(function(r){return '<a class="ref'+(r[7]?' src':'')+'" href="https://youtube.com/watch?v='+r[0]+'" target="_blank" rel="noreferrer">'+
+'<span class="th"><img src="https://i.ytimg.com/vi/'+r[0]+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"></span>'+
+'<span class="rb">'+(r[7]?'<span class="tag">Title format source</span>':'')+'<span class="big"><strong>'+r[5]+'x</strong><span>their usual views</span></span>'+
+'<span class="rt">'+e(r[1])+'</span><span class="rm"><span>'+e(r[2])+'</span>'+(r[3]?'<span>'+r[3]+' subs</span>':'')+'<span>'+r[4]+' views</span><span>'+r[8]+' views/hr</span><span>'+r[6]+'</span></span></span></a>'}).join('')+
+'</div><p class="pn">All dates are 2026. Multiplier is views against that channel’s normal, and views/hr is how fast each video is still picking up views. vidIQ data from 23 November. Titles are drafts until you sign them off.</p></aside></div></section>';
+var b=document.createElement('button');b.className='tab';b.type='button';b.innerHTML='<b>'+(n+1)+'</b><span>'+e(d.sh)+'</span>';b.onclick=function(){go(n)};T.appendChild(b);
+});
+S.innerHTML=h;
+var sl=[].slice.call(S.children),i=-1;
+function go(n){n=Math.max(0,Math.min(sl.length-1,n));if(n===i)return;
+sl.forEach(function(s,k){s.classList.toggle('on',k===n);s.setAttribute('aria-hidden',k===n?'false':'true');if(k===n)s.scrollTop=0});
+[].forEach.call(T.children,function(t,k){t.setAttribute('aria-current',k===n?'true':'false')});
+C.textContent=(n+1)+' / '+sl.length;i=n;try{history.replaceState(null,'','#'+(n+1))}catch(x){}}
+document.getElementById('prev').onclick=function(){go(i-1)};
+document.getElementById('next').onclick=function(){go(i+1)};
+document.addEventListener('keydown',function(ev){if(ev.key==='ArrowRight'||ev.key==='PageDown')go(i+1);if(ev.key==='ArrowLeft'||ev.key==='PageUp')go(i-1)});
+var x0=null,y0=0;document.addEventListener('touchstart',function(ev){x0=ev.touches[0].clientX;y0=ev.touches[0].clientY},{passive:true});
+document.addEventListener('touchend',function(ev){if(x0===null)return;var dx=ev.changedTouches[0].clientX-x0,dy=ev.changedTouches[0].clientY-y0;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)go(dx<0?i+1:i-1);x0=null},{passive:true});
+document.getElementById('present').onclick=function(){var d=document.documentElement;if(!document.fullscreenElement){if(d.requestFullscreen)d.requestFullscreen().catch(function(){})}else document.exitFullscreen()};
+var hn=parseInt(location.hash.slice(1),10);go(isNaN(hn)?0:hn-1);
+})();
+</script>
 </body>
 </html>
