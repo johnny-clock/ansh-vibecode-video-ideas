@@ -177,6 +177,8 @@
       font-size: clamp(17px, 1.6vw, 22px);
       line-height: 1.45;
     }
+    .alt-title { margin: -8px 0 26px; max-width: 660px; color: var(--muted); font-size: clamp(15px, 1.3vw, 18px); line-height: 1.4; }
+    .alt-title span { display: block; margin-bottom: 5px; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
     .accent { color: var(--accent); }
 
     .cover-grid {
@@ -361,6 +363,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
+    .outlier-grid.few { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .outlier-card {
       min-width: 0;
       overflow: hidden;
@@ -558,201 +561,136 @@
     </header>
 
     <div class="slides" id="slides">
-      <section class="slide active" data-title="Before your first AI app" aria-hidden="false">
+      <section class="slide active" data-title="Smart bed hack" aria-hidden="false">
         <div class="slide-inner">
           <div class="idea-layout">
             <div class="idea-copy">
               <p class="eyebrow reveal">Idea 1</p>
-              <h2 class="reveal">Watch This Before You Build Your First AI App</h2>
-              <p class="lede reveal">Pick the right problem, scope the first version and avoid the mistakes that stop an app from reaching real users.</p>
+              <h2 class="reveal">I Hacked My Smart Bed With AI (and Built My Own App for It)</h2>
+              <p class="alt-title reveal"><span>Alternative</span>Everyone’s Letting AI Hack Their Gadgets… So I Hacked My Bed</p>
+              <p class="lede reveal">Ansh unlocks his Eight Sleep with the open-source Free Sleep project, using AI as the guide, then builds his own control app for it in Vibecode.</p>
               <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>90</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>20x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>6</strong><span>recent outliers</span></div>
+                <div class="score vidiq-high"><strong>98</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>1,212x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>3</strong><span>recent outliers</span></div>
               </div>
               <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>A founder-first guide answers the questions viewers have before they spend time building. Vibecode can show each decision in practice.</p></div>
-                <div class="why-item"><h3>Video structure</h3><p>Validate the problem, choose a useful first workflow, test with real users and plan distribution before adding features.</p></div>
+                <div class="why-item"><h3>Why this idea works</h3><p>“AI hacks something I own” videos are breaking out on tiny channels: a car at 1,212x, a roundup at 1,017x and a TV at 913x. Nobody has done an Eight Sleep yet.</p></div>
+                <div class="why-item"><h3>Video structure</h3><p>Unlock the bed with Free Sleep and AI as the guide, build a control app in Vibecode on his phone, then run a real night on it side by side with the official app.</p></div>
               </div>
             </div>
             <div class="proof-board reveal">
               <div class="outlier-grid">
-                <a class="outlier-card" href="https://youtube.com/watch?v=Iouhc5LHhjA" target="_blank" rel="noreferrer" title="I Built &amp; Published My First iOS App: Here’s What I’d Never Do Again | 103.1K views | 22.0K subs | published 2026-08-31 | metrics 2026-09-24">
-                  <img src="assets/fresh/Iouhc5LHhjA.jpg" alt="I Built &amp; Published My First iOS App: Here’s What I’d Never Do Again thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">I Built &amp; Published My First iOS App: Here’s What I’d Never Do Again</span><span class="outlier-stats"><strong>15.89x</strong><span>103.1K views</span><span>22.0K subs</span></span></span>
+                <a class="outlier-card" href="https://youtube.com/watch?v=W7ogaG4TlGc" target="_blank" rel="noreferrer" title="Watch Claude Code hack my dad&#x27;s car in 5 minutes | 529.6K views | 5.5K subs | published 2026-07-20 | metrics 2026-11-23">
+                  <img src="assets/fresh/W7ogaG4TlGc.jpg" alt="Watch Claude Code hack my dad&#x27;s car in 5 minutes thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Watch Claude Code hack my dad&#x27;s car in 5 minutes</span><span class="outlier-stats"><strong>1,212x</strong><span>529.6K views</span><span>5.5K subs</span></span></span>
                 </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=srE08GVlIUk" target="_blank" rel="noreferrer" title="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) | 13.1K views | 33.3K subs | published 2026-09-21 | metrics 2026-09-24">
-                  <img src="assets/fresh/srE08GVlIUk.jpg" alt="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method)</span><span class="outlier-stats"><strong>2.61x</strong><span>13.1K views</span><span>33.3K subs</span></span></span>
+                <a class="outlier-card" href="https://youtube.com/watch?v=YtBrjCXQUkg" target="_blank" rel="noreferrer" title="People Are Using AI to Hack Everything They Own | 1.4M views | 19.7K subs | published 2026-10-26 | metrics 2026-11-23">
+                  <img src="assets/fresh/YtBrjCXQUkg.jpg" alt="People Are Using AI to Hack Everything They Own thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">People Are Using AI to Hack Everything They Own</span><span class="outlier-stats"><strong>1,017x</strong><span>1.4M views</span><span>19.7K subs</span></span></span>
                 </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=ZK-0mPddagU" target="_blank" rel="noreferrer" title="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish | 34.6K views | 24.3K subs | published 2026-08-28 | metrics 2026-09-24">
-                  <img src="assets/fresh/ZK-0mPddagU.jpg" alt="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish</span><span class="outlier-stats"><strong>4.23x</strong><span>34.6K views</span><span>24.3K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=nKvqgmHVBms" target="_blank" rel="noreferrer" title="Build an AI Agent Without Writing a Single Line of Code | 20.9K views | 1.6K subs | published 2026-08-30 | metrics 2026-09-24">
-                  <img src="assets/fresh/nKvqgmHVBms.jpg" alt="Build an AI Agent Without Writing a Single Line of Code thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Build an AI Agent Without Writing a Single Line of Code</span><span class="outlier-stats"><strong>20x</strong><span>20.9K views</span><span>1.6K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=lpeP6BcUlFU" target="_blank" rel="noreferrer" title="How to Build Real Mobile Apps with Claude - FULL COURSE | 11.2K views | 3.2K subs | published 2026-09-08 | metrics 2026-09-24">
-                  <img src="assets/fresh/lpeP6BcUlFU.jpg" alt="How to Build Real Mobile Apps with Claude - FULL COURSE thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">How to Build Real Mobile Apps with Claude - FULL COURSE</span><span class="outlier-stats"><strong>15.3x</strong><span>11.2K views</span><span>3.2K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=4M-kUY0u2bk" target="_blank" rel="noreferrer" title="The SIMPLEST Way to Build an App with AI in 2026 | 106.0K views | published Aug 2026 (screenshot: 1mo ago) | metrics user screenshot, 2026-09-24">
-                  <img src="assets/fresh/4M-kUY0u2bk.jpg" alt="The SIMPLEST Way to Build an App with AI in 2026 thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">The SIMPLEST Way to Build an App with AI in 2026</span><span class="outlier-stats"><strong>3x</strong><span>106.0K views</span><span>1mo ago</span></span></span>
+                <a class="outlier-card" href="https://youtube.com/watch?v=aN-65z6bvKk" target="_blank" rel="noreferrer" title="Everyone’s Letting AI Hack Their TVs… So I Tried It | 1.1M views | 4.6K subs | published 2026-11-15 | metrics 2026-11-23">
+                  <img src="assets/fresh/aN-65z6bvKk.jpg" alt="Everyone’s Letting AI Hack Their TVs… So I Tried It thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Everyone’s Letting AI Hack Their TVs… So I Tried It</span><span class="outlier-stats"><strong>913x</strong><span>1.1M views</span><span>4.6K subs</span></span></span>
                 </a>
               </div>
-              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide" data-title="Complete app tutorial" aria-hidden="true">
+      <section class="slide" data-title="Claude for business" aria-hidden="true">
         <div class="slide-inner">
           <div class="idea-layout">
             <div class="idea-copy">
               <p class="eyebrow reveal">Idea 2</p>
-              <h2 class="reveal">How to Build a Complete App With AI</h2>
-              <p class="lede reveal">Follow one useful app from first brief to working prototype, real test and launch. Show what breaks along the way.</p>
+              <h2 class="reveal">21 Life-Changing Ways to Use Claude for Your Business in 2027</h2>
+              <p class="alt-title reveal"><span>Alternative</span>People Are Using Claude to Run Their Entire Business Now</p>
+              <p class="lede reveal">A fast roundup of real things businesses did with Claude, each with its source on screen.</p>
               <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>87</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>29.65x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>6</strong><span>recent outliers</span></div>
+                <div class="score vidiq-high"><strong>88</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>94x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>2</strong><span>recent outliers</span></div>
               </div>
               <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>The strongest references show a complete project, not isolated features. A single app gives the tutorial a clear finish line.</p></div>
-                <div class="why-item"><h3>What to cover</h3><p>Brief, working interface, data flow, user test, fixes and launch. Show payments only when the example actually needs them.</p></div>
+                <div class="why-item"><h3>Why this idea works</h3><p>Nick Saraev’s “33 Life-Changing Ways to Use Claude in 2027” is at 1.5M views (13x), and a construction-only copy hit 94x on a 1.4K-subscriber channel. “Claude for small business” gets about 90K searches a month, up 60%.</p></div>
+                <div class="why-item"><h3>Video structure</h3><p>Each item is a real business use with its source on screen. Vibecode comes in on “replace an app you pay for” and “build a customer app”. It covers other businesses rather than Ansh’s own work, so it stays apart from his Dots and Grok Bot videos.</p></div>
               </div>
             </div>
             <div class="proof-board reveal">
-              <div class="outlier-grid">
-                <a class="outlier-card" href="https://youtube.com/watch?v=lpeP6BcUlFU" target="_blank" rel="noreferrer" title="How to Build Real Mobile Apps with Claude - FULL COURSE | 11.2K views | 3.2K subs | published 2026-09-08 | metrics 2026-09-24">
-                  <img src="assets/fresh/lpeP6BcUlFU.jpg" alt="How to Build Real Mobile Apps with Claude - FULL COURSE thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">How to Build Real Mobile Apps with Claude - FULL COURSE</span><span class="outlier-stats"><strong>15.3x</strong><span>11.2K views</span><span>3.2K subs</span></span></span>
+              <div class="outlier-grid few">
+                <a class="outlier-card" href="https://youtube.com/watch?v=kEGSIYF27Yw" target="_blank" rel="noreferrer" title="13 Ways to Use Claude in Construction in 2027. | 12.9K views | 1.4K subs | published 2026-11-18 | metrics 2026-11-23">
+                  <img src="assets/fresh/kEGSIYF27Yw.jpg" alt="13 Ways to Use Claude in Construction in 2027. thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">13 Ways to Use Claude in Construction in 2027.</span><span class="outlier-stats"><strong>94x</strong><span>12.9K views</span><span>1.4K subs</span></span></span>
                 </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=wZXrM4jqGj4" target="_blank" rel="noreferrer" title="AI Studio + Stitch + Android Studio: Build an Earnings App (Full Tutorial) | 5.5K views | 11.0K subs | published 2026-09-01 | metrics 2026-09-24">
-                  <img src="assets/fresh/wZXrM4jqGj4.jpg" alt="AI Studio + Stitch + Android Studio: Build an Earnings App (Full Tutorial) thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">AI Studio + Stitch + Android Studio: Build an Earnings App (Full Tutorial)</span><span class="outlier-stats"><strong>20.81x</strong><span>5.5K views</span><span>11.0K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=-7ajktD8pOo" target="_blank" rel="noreferrer" title="Build a Multi-Agent AI Wedding Planner with LangChain | Full Project Step-by-Step | 47.4K views | 3.4K subs | published 2026-08-21 | metrics 2026-09-24">
-                  <img src="assets/fresh/-7ajktD8pOo.jpg" alt="Build a Multi-Agent AI Wedding Planner with LangChain | Full Project Step-by-Step thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Build a Multi-Agent AI Wedding Planner with LangChain | Full Project Step-by-Step</span><span class="outlier-stats"><strong>29.65x</strong><span>47.4K views</span><span>3.4K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=ZK-0mPddagU" target="_blank" rel="noreferrer" title="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish | 34.6K views | 24.3K subs | published 2026-08-28 | metrics 2026-09-24">
-                  <img src="assets/fresh/ZK-0mPddagU.jpg" alt="Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Complete AI SaaS Product Design in Figma - Full Web App From Start to Finish</span><span class="outlier-stats"><strong>4.23x</strong><span>34.6K views</span><span>24.3K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=ovP2XcR4J9I" target="_blank" rel="noreferrer" title="Build &amp; Deploy a Complete School Web App with React, Express, MongoDB | 11.9K views | 90.9K subs | published 2026-09-17 | metrics 2026-09-24">
-                  <img src="assets/fresh/ovP2XcR4J9I.jpg" alt="Build &amp; Deploy a Complete School Web App with React, Express, MongoDB thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Build &amp; Deploy a Complete School Web App with React, Express, MongoDB</span><span class="outlier-stats"><strong>4.15x</strong><span>11.9K views</span><span>90.9K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=4M-kUY0u2bk" target="_blank" rel="noreferrer" title="The SIMPLEST Way to Build an App with AI in 2026 | 106.0K views | published Aug 2026 (screenshot: 1mo ago) | metrics user screenshot, 2026-09-24">
-                  <img src="assets/fresh/4M-kUY0u2bk.jpg" alt="The SIMPLEST Way to Build an App with AI in 2026 thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">The SIMPLEST Way to Build an App with AI in 2026</span><span class="outlier-stats"><strong>3x</strong><span>106.0K views</span><span>1mo ago</span></span></span>
+                <a class="outlier-card" href="https://youtube.com/watch?v=KDyPHt4lW60" target="_blank" rel="noreferrer" title="33 Life-Changing Ways to Use Claude in 2027 | 1.5M views | 645K subs | published 2026-11-02 | metrics 2026-11-23">
+                  <img src="assets/fresh/KDyPHt4lW60.jpg" alt="33 Life-Changing Ways to Use Claude in 2027 thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">33 Life-Changing Ways to Use Claude in 2027</span><span class="outlier-stats"><strong>13x</strong><span>1.5M views</span><span>645K subs</span></span></span>
                 </a>
               </div>
-              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide" data-title="Five founder skills" aria-hidden="true">
+      <section class="slide" data-title="Antigravity guide" aria-hidden="true">
         <div class="slide-inner">
           <div class="idea-layout">
             <div class="idea-copy">
               <p class="eyebrow reveal">Idea 3</p>
-              <h2 class="reveal">5 Skills You Need to Build Apps With AI</h2>
-              <p class="lede reveal">Explain the five skills founders need to build useful apps with AI and apply each one inside Vibecode.</p>
+              <h2 class="reveal">Learn 96% of Google Antigravity in [X] Minutes</h2>
+              <p class="lede reveal">A beginner’s guide built around the new Antigravity features, ending where Antigravity stops: getting an app onto your phone. A search experiment, since it’s a developer tool.</p>
               <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>92</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>20.57x</strong><span>best recent breakout</span></div>
-                <div class="score"><strong>6</strong><span>recent outliers</span></div>
+                <div class="score vidiq-high"><strong>94</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>45x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>1</strong><span>recent outlier</span></div>
               </div>
               <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>Your software and business experience grounds each skill in a decision founders must make, rather than another list of AI tools.</p></div>
-                <div class="why-item"><h3>The five skills</h3><p>Problem selection, MVP scoping, clear instructions, testing broken flows and launching for real feedback.</p></div>
+                <div class="why-item"><h3>Why this idea works</h3><p>“Google antigravity” gets about 1.7M searches a month and “how to use google antigravity” about 104K. The “Learn X% in Y minutes” format is proven, and the existing “Learn 90%” Antigravity video came out before the November updates.</p></div>
+                <div class="why-item"><h3>Video structure</h3><p>Knowledge Work mode, Remote Agents, Voice Mode and the Orchestrator, then the step Antigravity can’t do, getting the app onto your phone, which is where Vibecode comes in. [X] becomes the final cut’s runtime.</p></div>
               </div>
             </div>
             <div class="proof-board reveal">
-              <div class="outlier-grid">
-                <a class="outlier-card" href="https://youtube.com/watch?v=XN3xNJvWXsc" target="_blank" rel="noreferrer" title="Essential Skills for Becoming an AI Engineer: RAG, AI Agents, &amp; More | 384.6K views | 1790.0K subs | published 2026-09-13 | metrics 2026-09-20">
-                  <img src="assets/fresh/XN3xNJvWXsc.jpg" alt="Essential Skills for Becoming an AI Engineer: RAG, AI Agents, &amp; More thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Essential Skills for Becoming an AI Engineer: RAG, AI Agents, &amp; More</span><span class="outlier-stats"><strong>11.06x</strong><span>384.6K views</span><span>1790.0K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=EsB401dN5b4" target="_blank" rel="noreferrer" title="The 3 Skills That Separate Architects From Senior Developers | 83.9K views | 61.1K subs | published 2026-09-04 | metrics 2026-09-20">
-                  <img src="assets/fresh/EsB401dN5b4.jpg" alt="The 3 Skills That Separate Architects From Senior Developers thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">The 3 Skills That Separate Architects From Senior Developers</span><span class="outlier-stats"><strong>15.17x</strong><span>83.9K views</span><span>61.1K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=MltkRz94SWA" target="_blank" rel="noreferrer" title="The Most Important Skill for AI Engineers: Evals Explained | 40.0K views | 8.9K subs | published 2026-09-17 | metrics 2026-09-24">
-                  <img src="assets/fresh/MltkRz94SWA.jpg" alt="The Most Important Skill for AI Engineers: Evals Explained thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">The Most Important Skill for AI Engineers: Evals Explained</span><span class="outlier-stats"><strong>3.45x</strong><span>40.0K views</span><span>8.9K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=n9CSSSir3fE" target="_blank" rel="noreferrer" title="Claude Code Skills from First Principles | 15.1K views | 8.6K subs | published 2026-09-15 | metrics 2026-09-24">
-                  <img src="assets/fresh/n9CSSSir3fE.jpg" alt="Claude Code Skills from First Principles thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Claude Code Skills from First Principles</span><span class="outlier-stats"><strong>5.03x</strong><span>15.1K views</span><span>8.6K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=-BnIfH2J50I" target="_blank" rel="noreferrer" title="How Context Engineering Improves AI Coding Agents | 19.0K views | 89.8K subs | published 2026-09-03 | metrics 2026-09-20">
-                  <img src="assets/fresh/-BnIfH2J50I.jpg" alt="How Context Engineering Improves AI Coding Agents thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">How Context Engineering Improves AI Coding Agents</span><span class="outlier-stats"><strong>20.57x</strong><span>19.0K views</span><span>89.8K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=QjCyqvXOh10" target="_blank" rel="noreferrer" title="The AI Skills Giving Ordinary People an Unfair Advantage | 16.6K views | 11.3K subs | published 2026-09-04 | metrics 2026-09-20">
-                  <img src="assets/fresh/QjCyqvXOh10.jpg" alt="The AI Skills Giving Ordinary People an Unfair Advantage thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">The AI Skills Giving Ordinary People an Unfair Advantage</span><span class="outlier-stats"><strong>2.52x</strong><span>16.6K views</span><span>11.3K subs</span></span></span>
+              <div class="outlier-grid few">
+                <a class="outlier-card" href="https://youtube.com/watch?v=O2vgG9sf7CI" target="_blank" rel="noreferrer" title="Learn 95% of Grok Bot in 22 minutes | 44.4K views | 4.4K subs | published 2026-09-04 | metrics 2026-11-23">
+                  <img src="assets/fresh/O2vgG9sf7CI.jpg" alt="Learn 95% of Grok Bot in 22 minutes thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Learn 95% of Grok Bot in 22 minutes</span><span class="outlier-stats"><strong>45x</strong><span>44.4K views</span><span>4.4K subs</span></span></span>
                 </a>
               </div>
-              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide" data-title="Small business app ideas" aria-hidden="true">
+      <section class="slide" data-title="Grok Bot clone" aria-hidden="true">
         <div class="slide-inner">
           <div class="idea-layout">
             <div class="idea-copy">
               <p class="eyebrow reveal">Idea 4</p>
-              <h2 class="reveal">How I Built 3 AI Apps for Small Businesses</h2>
-              <p class="lede reveal">Build three apps for lead handling, customer access and internal operations, using a format already winning on small channels.</p>
+              <h2 class="reveal">I Rebuilt Grok Bot for $[real build cost] (and It Has No Limits)</h2>
+              <p class="alt-title reveal"><span>Alternative</span>Grok Bot Cut My Limits… So I Vibe Coded My Own</p>
+              <p class="lede reveal">Ansh rebuilds Grok Bot from one prompt in Vibecode, installs it on his phone and puts it side by side with the real thing.</p>
               <div class="score-row reveal">
-                <div class="score vidiq-high"><strong>90</strong><span>vidIQ title score, high</span></div>
-                <div class="score"><strong>19.92x</strong><span>anchor breakout</span></div>
-                <div class="score"><strong>6</strong><span>recent references</span></div>
+                <div class="score vidiq-high"><strong>93</strong><span>vidIQ title score, high</span></div>
+                <div class="score"><strong>14x</strong><span>best recent breakout</span></div>
+                <div class="score"><strong>1</strong><span>recent outlier</span></div>
               </div>
               <div class="why reveal">
-                <div class="why-item"><h3>Why this idea works</h3><p>Real business tasks make each build concrete: leads, customer access and day-to-day operations.</p></div>
-                <div class="why-item"><h3>Video structure</h3><p>Open with the business problem, demonstrate the app, and show what happened when you tested it.</p></div>
+                <div class="why-item"><h3>Why this idea works</h3><p>Grok Bot users have been hitting their limits much faster, and Musk has said costs were “unsustainably high” relative to revenue. “Grok Bot Cut My Limits… So I Built My Own” hit 14x. On Ansh’s channel, AI-product clones (Muse 3.9K views, Duet 3.1K) beat the CapCut clone (147).</p></div>
+                <div class="why-item"><h3>Video structure</h3><p>Same structure as the Muse video: one prompt in Vibecode, installed on his phone, side by side with the real Grok Bot, ending with a cost comparison. It makes clear that “no limits” means no weekly cap, since he still pays his own API costs.</p></div>
               </div>
             </div>
             <div class="proof-board reveal">
-              <div class="outlier-grid">
-                <a class="outlier-card" href="https://youtube.com/watch?v=OIsKC7sJooU" target="_blank" rel="noreferrer" title="How I SOLO Build Apps That ACTUALLY Make Money in 2026 | 8.9K views | 7.3K subs | published Aug 2026 (screenshot: 1mo ago) | metrics user screenshot, 2026-09-24">
-                  <img src="assets/fresh/OIsKC7sJooU.jpg" alt="How I SOLO Build Apps That ACTUALLY Make Money in 2026 thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">How I SOLO Build Apps That ACTUALLY Make Money in 2026</span><span class="outlier-stats"><strong>4x</strong><span>8.9K views</span><span>7.3K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=xLwgYzdOD4A" target="_blank" rel="noreferrer" title="I Built an App People Actually Pay For! $10k | 29.1K views | 4.2K subs | published 2026-09-15 | metrics 2026-09-20">
-                  <img src="assets/fresh/xLwgYzdOD4A.jpg" alt="I Built an App People Actually Pay For! $10k thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">I Built an App People Actually Pay For! $10k</span><span class="outlier-stats"><strong>19.47x</strong><span>29.1K views</span><span>4.2K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=zVlqXgQLcag" target="_blank" rel="noreferrer" title="Stop Selling BORING Websites — Sell AI Talking Websites | 29.8K views | 4.3K subs | published 2026-09-03 | metrics 2026-09-20">
-                  <img src="assets/fresh/zVlqXgQLcag.jpg" alt="Stop Selling BORING Websites — Sell AI Talking Websites thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">Stop Selling BORING Websites — Sell AI Talking Websites</span><span class="outlier-stats"><strong>19.92x</strong><span>29.8K views</span><span>4.3K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=2NLzwkSqdqw" target="_blank" rel="noreferrer" title="$8000 in 48 hours CHALLENGE with AI digital products | 37.0K views | 6.1K subs | published 2026-09-08 | metrics 2026-09-24">
-                  <img src="assets/fresh/2NLzwkSqdqw.jpg" alt="$8000 in 48 hours CHALLENGE with AI digital products thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">$8000 in 48 hours CHALLENGE with AI digital products</span><span class="outlier-stats"><strong>5.86x</strong><span>37.0K views</span><span>6.1K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=srE08GVlIUk" target="_blank" rel="noreferrer" title="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) | 13.1K views | 33.3K subs | published 2026-09-21 | metrics 2026-09-24">
-                  <img src="assets/fresh/srE08GVlIUk.jpg" alt="How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method) thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">How to Find a $1M SaaS Idea in 2026 (Full Guide / AI Method)</span><span class="outlier-stats"><strong>2.61x</strong><span>13.1K views</span><span>33.3K subs</span></span></span>
-                </a>
-                <a class="outlier-card" href="https://youtube.com/watch?v=mDOEonxf1l0" target="_blank" rel="noreferrer" title="I Gave 4 AI Agents One Product Launch - Teamily AI Built Everything | 80.4K views | 154.0K subs | published 2026-09-09 | metrics 2026-09-20">
-                  <img src="assets/fresh/mDOEonxf1l0.jpg" alt="I Gave 4 AI Agents One Product Launch - Teamily AI Built Everything thumbnail" />
-                  <span class="outlier-info"><span class="outlier-title">I Gave 4 AI Agents One Product Launch - Teamily AI Built Everything</span><span class="outlier-stats"><strong>2.87x</strong><span>80.4K views</span><span>154.0K subs</span></span></span>
+              <div class="outlier-grid few">
+                <a class="outlier-card" href="https://youtube.com/watch?v=vNpJz-K644k" target="_blank" rel="noreferrer" title="Grok Bot Cut My Limits... So I Built My Own (Open Source) | 96.5K views | 15.0K subs | published 2026-11-09 | metrics 2026-11-23">
+                  <img src="assets/fresh/vNpJz-K644k.jpg" alt="Grok Bot Cut My Limits... So I Built My Own (Open Source) thumbnail" />
+                  <span class="outlier-info"><span class="outlier-title">Grok Bot Cut My Limits... So I Built My Own (Open Source)</span><span class="outlier-stats"><strong>14x</strong><span>96.5K views</span><span>15.0K subs</span></span></span>
                 </a>
               </div>
-              <p class="snapshot">References published within 3 months. vidIQ snapshots: 20-24 September 2026; user screenshots labeled on hover. Click any thumbnail for its source.</p>
+              <p class="snapshot">References published July to November 2026. vidIQ snapshots: 23 November 2026. Click any thumbnail for its source.</p>
             </div>
           </div>
         </div>
